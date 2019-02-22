@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  establishment: one
+  YelpId: MyString
+  review_text: MyString
+  poc_rating: 1.5
+  women_rating: 1.5
+  lgbtq_rating: 1.5
+
+two:
+  user: two
+  establishment: two
+  YelpId: MyString
+  review_text: MyString
+  poc_rating: 1.5
+  women_rating: 1.5
+  lgbtq_rating: 1.5
