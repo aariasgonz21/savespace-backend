@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   def show
+    
   end
 
   def new
@@ -14,6 +15,6 @@ class Api::V1::UsersController < ApplicationController
   def update
   end
 
-  # def delete
+  # def destroy
   # end
 end

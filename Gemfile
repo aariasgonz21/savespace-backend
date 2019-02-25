@@ -44,10 +44,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'yelp', require: 'yelp'
-
-gem 'jwt', '~> 2.1'
+gem 'json'
 
 gem 'active_model_serializers', '~> 0.10.8'
 
 gem 'rest-client'
+gem 'http'
+gem 'yelp'
+gem 'figaro'
