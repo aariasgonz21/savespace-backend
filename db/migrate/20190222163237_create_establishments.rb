@@ -1,7 +1,7 @@
 class CreateEstablishments < ActiveRecord::Migration[5.2]
   def change
     create_table :establishments do |t|
-      t.string :yelpID
+      t.string :yelp_id
       t.string :name
       t.string :category
       t.boolean :open

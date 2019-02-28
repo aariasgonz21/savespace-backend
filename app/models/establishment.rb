@@ -15,4 +15,8 @@ class Establishment < ApplicationRecord
       business_hash = JSON.parse(response.body)
       business_hash['businesses']
     end
+
+    def woman_avg()
+
+    end
 end

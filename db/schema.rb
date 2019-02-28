@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_02_22_165128) do
 
   create_table "establishments", force: :cascade do |t|
-    t.string "yelpID"
+    t.string "yelp_id"
     t.string "name"
     t.string "category"
     t.boolean "open"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_165128) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "establishment_id"
-    t.string "YelpId"
+    t.string "name"
     t.string "review_text"
     t.float "poc_rating"
     t.float "women_rating"

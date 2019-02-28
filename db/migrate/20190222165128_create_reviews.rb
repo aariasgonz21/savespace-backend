@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
       t.references :user, foreign_key: true
       t.references :establishment, foreign_key: true
-      t.string :YelpId
+      t.string :name
       t.string :review_text
       t.float :poc_rating
       t.float :women_rating
