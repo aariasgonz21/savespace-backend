@@ -5,10 +5,9 @@ class Api::V1::EstablishmentsController < ApplicationController
   #   render json: @establishments
   # end
   # #
-  # def show
-  #   @establishment = Establishment.find(params[:id])
-  #   render json: @establishment
-  # end
+  def show
+    render json: Establishment.search_single_est(params[:id])
+  end
 
   def create
     render json: Establishment.search(params["term"], params["location"])
