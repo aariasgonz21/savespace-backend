@@ -1,5 +1,5 @@
 class Api::V1::EstablishmentsController < ApplicationController
-
+  skip_before_action :authorized, only: [:create]
   # def index
   #   @establishments = Establishment.all
   #   render json: @establishments
