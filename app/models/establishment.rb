@@ -3,9 +3,9 @@ class Establishment < ApplicationRecord
 
     #ENV["API_KEY"]
     def self.search_single_est(establishment_id)
-      url = `https://api.yelp.com/v3/businesses/#{establishment_id}`
+      url = "https://api.yelp.com/v3/businesses/#{establishment_id}"
         # https://api.yelp.com/v3/businesses/{id}
-        #byebug
+        # byebug
       response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url)
       business_hash = JSON.parse(response.body)
       business_hash

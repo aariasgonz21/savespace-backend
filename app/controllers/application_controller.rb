@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   before_action :authorized
 
   def encode_token(payload)
-    JWT.encode(payload, 'be3p_b0op ')
+    JWT.encode(payload, 'be3p_b0op')
   end
 
   def auth_header
@@ -21,6 +21,7 @@ class ApplicationController < ActionController::API
   end
 
     def current_user
+      # byebug
       if decoded_token
         user_id = decoded_token[0]['user_id']
         @user = User.find_by(id: user_id)

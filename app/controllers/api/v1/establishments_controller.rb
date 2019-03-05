@@ -6,6 +6,9 @@ class Api::V1::EstablishmentsController < ApplicationController
   # end
   # #
   def show
+    # @establishment = Establishment.search_single_est(params[:id])
+    # @reviews = Establishment.find_by(yelp_id: params[:id]).reviews
+    # render json: {est: @establishment, review: @reviews}
     render json: Establishment.search_single_est(params[:id])
   end
 
