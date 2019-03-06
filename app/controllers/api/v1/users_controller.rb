@@ -6,13 +6,17 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
 
-  def show
-    @user = User.find(params[:id])
-    render json: @user, serializer: UserSerializer
-  end
+  # def show
+  #   @user = User.find(params[:id])
+  #
+  #   render json: {@user}, serializer: UserSerializer
+  # end
 
   def profile
-   render json: { user: UserSerializer.new(current_user) }, status: :accepted
+    @user = UserSerializer.new(current_user)
+    #byebug
+    @reviews = User.find(current_user.id).reviews
+   render json: { user: @user, user_reviews: @reviews }, status: :accepted
   end
 
   def create
