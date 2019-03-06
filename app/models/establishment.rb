@@ -4,8 +4,6 @@ class Establishment < ApplicationRecord
     #ENV["API_KEY"]
     def self.search_single_est(establishment_id)
       url = "https://api.yelp.com/v3/businesses/#{establishment_id}"
-        # https://api.yelp.com/v3/businesses/{id}
-        # byebug
       response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url)
       business_hash = JSON.parse(response.body)
       business_hash
@@ -23,12 +21,23 @@ class Establishment < ApplicationRecord
       business_hash['businesses']
     end
 
+    def avg(item)
+      all_ratings = self.reviews.map {|review|
+        review.send(item)
+      }
+      all_ratings.sum / all_ratings.length
+    end
+
     def woman_avg()
-      Establishment.all.map{|establishment|
-        establishment.reviews.map{|review|
-          review.women_rating
-          }
-        }
+      avg(:women_rating)
+    end
+
+    def poc_avg()
+      avg(:poc_rating)
+    end
+
+    def lgbtq_avg()
+      avg(:lgbtq_rating)
     end
 
 end

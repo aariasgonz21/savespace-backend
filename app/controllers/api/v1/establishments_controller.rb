@@ -9,7 +9,11 @@ class Api::V1::EstablishmentsController < ApplicationController
     # @establishment = Establishment.search_single_est(params[:id])
     # @reviews = Establishment.find_by(yelp_id: params[:id]).reviews
     # render json: {est: @establishment, review: @reviews}
-    render json: Establishment.search_single_est(params[:id])
+    @women_avg = Establishment.find_by(params[:id]).woman_avg
+    @poc_avg = Establishment.find_by(params[:id]).poc_avg
+    @lgbtq_avg = Establishment.find_by(params[:id]).lgbtq_avg
+
+    render json: {Establishment.search_single_est(params[:id])}
   end
 
   def create
