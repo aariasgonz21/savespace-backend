@@ -4,9 +4,9 @@ class Api::V1::ReviewsController < ApplicationController
 
     @review = Review.new(establishment_id: @establishment.id, user_id: review_params[:user_id], name: review_params[:name], women_rating: review_params[:women_rating], poc_rating: review_params[:poc_rating], lgbtq_rating: review_params[:lgbtq_rating], review_text: review_params[:review])
 
-    # byebug
+
     if @review.save
-        render json: @review
+        render json: ReviewSerializer.new(@review)
       else
         render json: {errors: @review.errors.full_messages}
       end

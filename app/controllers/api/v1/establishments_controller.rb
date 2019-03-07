@@ -6,18 +6,30 @@ class Api::V1::EstablishmentsController < ApplicationController
   # end
   # #
   def show
-    # @establishment = Establishment.search_single_est(params[:id])
-    # @reviews = Establishment.find_by(yelp_id: params[:id]).reviews
-    # render json: {est: @establishment, review: @reviews}
-    @women_avg = Establishment.find_by(params[:id]).woman_avg
-    @poc_avg = Establishment.find_by(params[:id]).poc_avg
-    @lgbtq_avg = Establishment.find_by(params[:id]).lgbtq_avg
-
-    render json: {Establishment.search_single_est(params[:id])}
+    @establishment = Establishment.search_single_est(params[:id])
+    if Establishment.find_by(yelp_id: @establishment["id"])
+      @reviews = Establishment.find_by(yelp_id: @establishment["id"]).reviews.map{|rev| ReviewSerializer.new(rev)}
+    else
+      @reviews = []
+    end
+    #byebug
+    render json:{establishment: @establishment, reviews: @reviews}
   end
 
   def create
-    render json: Establishment.search(params["term"], params["location"])
+    # @woman_avg = Establishment.find_by(params[:id]).woman_avg
+    # @poc_avg = Establishment.find_by(params[:id]).poc_avg
+    # @lgbtq_avg = Establishment.find_by(params[:id]).lgbtq_avg
+    @establishments = Establishment.search(params["term"], params["location"])
+    test = @establishments.map do |establishment|
+      @establishment = Establishment.find_by(yelp_id: establishment["id"])
+      if @establishment
+        establishment.merge(@establishment.overall_ratings())
+      else
+        establishment
+      end
+    end
+    render json: test
   end
 
   # def search

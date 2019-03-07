@@ -40,4 +40,8 @@ class Establishment < ApplicationRecord
       avg(:lgbtq_rating)
     end
 
+    def overall_ratings()
+      {lgbtq: lgbtq_avg(), poc: poc_avg(), women: woman_avg()}
+    end
+
 end
