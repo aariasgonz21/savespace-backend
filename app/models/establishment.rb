@@ -25,7 +25,7 @@ class Establishment < ApplicationRecord
       all_ratings = self.reviews.map {|review|
         review.send(item)
       }
-      all_ratings.sum / all_ratings.length
+      (all_ratings.sum / all_ratings.length * 10).floor / 10.0
     end
 
     def woman_avg()
