@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
   def profile
     @user = UserSerializer.new(current_user)
     #byebug
-    @reviews = User.find(current_user.id).reviews
+    @reviews = User.find(current_user.id).reviews.map{|rev| ReviewSerializer.new(rev)}
    render json: { user: @user, user_reviews: @reviews }, status: :accepted
   end
 
