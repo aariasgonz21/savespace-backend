@@ -22,10 +22,12 @@ class Establishment < ApplicationRecord
     end
 
     def avg(item)
+      #byebug
       all_ratings = self.reviews.map {|review|
-        review.send(item)
+           review.send(item)
       }
-      (all_ratings.sum / all_ratings.length * 10).floor / 10.0
+      filtered_ratings = all_ratings.select{|rating|rating != 0.0 }
+      (filtered_ratings.sum / filtered_ratings.length * 10).floor / 10.0
     end
 
     def woman_avg()
