@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_221031) do
+ActiveRecord::Schema.define(version: 2019_03_25_232809) do
 
   create_table "establishments", force: :cascade do |t|
     t.string "yelp_id"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_03_03_221031) do
     t.float "lgbtq_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "establishment_name"
+    t.string "yelp_id"
     t.index ["establishment_id"], name: "index_reviews_on_establishment_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
