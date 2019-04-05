@@ -1,8 +1,8 @@
 class CreateReviews < ActiveRecord::Migration[5.2]
   def change
     create_table :reviews do |t|
-      t.references :user, foreign_key: true
-      t.references :establishment, foreign_key: true
+      t.references :user
+      t.references :establishment
       t.string :name
       t.string :review_text
       t.float :poc_rating
