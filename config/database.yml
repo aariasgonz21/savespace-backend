@@ -19,10 +19,10 @@ development:
 test:
   <<: *default
   database: my_database_test
-# 
-# production:
-#   <<: *default
-#   database: my_database_production
+#
+production:
+  <<: *default
+  database: my_database_production
 #
 #   development:
 #   adapter: postgresql
