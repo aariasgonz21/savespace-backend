@@ -17,9 +17,6 @@ class Api::V1::EstablishmentsController < ApplicationController
   end
 
   def create
-    # @woman_avg = Establishment.find_by(params[:id]).woman_avg
-    # @poc_avg = Establishment.find_by(params[:id]).poc_avg
-    # @lgbtq_avg = Establishment.find_by(params[:id]).lgbtq_avg
     @establishments = Establishment.search(params["term"], params["location"])
     test = @establishments.map do |establishment|
       @establishment = Establishment.find_by(yelp_id: establishment["id"])

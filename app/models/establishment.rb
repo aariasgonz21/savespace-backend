@@ -22,7 +22,6 @@ class Establishment < ApplicationRecord
     end
 
     def avg(item)
-      #byebug
       all_ratings = self.reviews.map {|review|
            review.send(item)
       }
