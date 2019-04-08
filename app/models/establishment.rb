@@ -16,7 +16,8 @@ class Establishment < ApplicationRecord
         location: location,
         limit: 10
       }
-      response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get_response(url, params: params)
+      response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
+      byebug
       business_hash = JSON.parse(response.body)
       business_hash['businesses']
     end
