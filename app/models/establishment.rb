@@ -17,7 +17,6 @@ class Establishment < ApplicationRecord
         limit: 10
       }
       response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
-      byebug
       business_hash = JSON.parse(response.body)
       business_hash['businesses']
     end
@@ -29,7 +28,7 @@ class Establishment < ApplicationRecord
         location: "queens",
         limit: 10
       }
-      response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get("https://api.yelp.com/v3/businesses/search", params: params)
+      response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
       business_hash = JSON.parse(response.body)
       business_hash['businesses']
     end
