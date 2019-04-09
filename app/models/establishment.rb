@@ -24,8 +24,8 @@ class Establishment < ApplicationRecord
     def self.search(term, location)
       url = "https://api.yelp.com/v3/businesses/search"
       params = {
-        term: "cookies",
-        location: "queens",
+        term: term,
+        location: location,
         limit: 10
       }
       response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
