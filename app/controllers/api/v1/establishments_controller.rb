@@ -28,20 +28,4 @@ class Api::V1::EstablishmentsController < ApplicationController
     end
     render json: test
   end
-
-  # def search
-  #
-  # end
-  #
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # private
-  #
-  # def establishment_params
-  #   params.require(:establishment).permit(:YelpId, :name, :category, :open, :hours, :phone, :image)
-  # end
 end

@@ -21,17 +21,19 @@ class Establishment < ApplicationRecord
       business_hash['businesses']
     end
 
-    def self.search(term, location)
-      url = "https://api.yelp.com/v3/businesses/search"
-      params = {
-        term: term,
-        location: location,
-        limit: 10
-      }
-      response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
-      business_hash = JSON.parse(response.body)
-      business_hash['businesses']
-    end
+    ### Used For Heroku ###
+
+    #def self.search(term, location)
+    #   url = "https://api.yelp.com/v3/businesses/search"
+    #   params = {
+    #     term: term,
+    #     location: location,
+    #     limit: 10
+    #   }
+    #   response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
+    #   business_hash = JSON.parse(response.body)
+    #   business_hash['businesses']
+    # end
 
     def avg(item)
       all_ratings = self.reviews.map {|review|
