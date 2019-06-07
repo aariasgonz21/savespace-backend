@@ -1,4 +1,4 @@
-# SaveSpace (Front-End)
+# SaveSpace (Backend)
 
 A web application made to rate and review a location based on their inclusivity for women, people of color and the LGBTQ community.
 
